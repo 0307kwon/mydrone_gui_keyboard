@@ -261,22 +261,16 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
 	if(event->key() == Qt::Key_W){
-		ROS_INFO("keyPressEvent(%x)", event->key());
 		qnode.setPosY(MOVE_SPD);
 	}else if(event->key() == Qt::Key_S){
-		ROS_INFO("keyPressEvent(%x)", event->key());
 		qnode.setPosY(-MOVE_SPD);
 	}else if(event->key() == Qt::Key_D){
-		ROS_INFO("keyPressEvent(%x)", event->key());
 		qnode.setPosX(-MOVE_SPD);
 	}else if(event->key() == Qt::Key_A){
-		ROS_INFO("keyPressEvent(%x)", event->key());
 		qnode.setPosX(MOVE_SPD);
 	}else if(event->key() == Qt::Key_Up){
-		ROS_INFO("keyPressEvent(%x)", event->key());
 		qnode.setPosZ(MOVE_SPD);
 	}else if(event->key() == Qt::Key_Down){
-		ROS_INFO("keyPressEvent(%x)", event->key());
 		qnode.setPosZ(-MOVE_SPD);
 	}
 }
