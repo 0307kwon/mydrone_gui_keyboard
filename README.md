@@ -39,6 +39,6 @@ txt_location 위치에 txt파일로 0.1s 마다 위치와 방향 등을 기록�
 *start tracking
 txt_location 위치의 txt파일을 0.1s 마다 한줄씩 읽어와 드론에게 위치를 전송합니다.
 
-*실행 결과
+![Alt text](/image/output.gif "tracking")
 
 
