@@ -12,8 +12,8 @@ timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합�
 1. catkin_ws/src 폴더로 진입
 2. git clone https://github.com/0307kwon/mydrone_gui_keyboard.git
 3. catkin_make
-4. rosrun mydrone_gui_keyboard mydrone_gui_keyboard
-5. on
+4. roslaunch mydrone_gui_keyboard mydrone.launch
+(tracking 관련 txt파일 위치는 launch파일에서 수정가능)
 
 ### 2-1 키보드 사용법
 w : 전진
