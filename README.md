@@ -25,6 +25,8 @@ d : 우로 이동
 ↓ : 고도 하강
 ( 키입력이 제대로 작동하지 않을 때에는 화면의 오른쪽 Command Panel에 focus를 두고(마우스 클릭) 다시 시도 )
 
+![Alt text](/image/keyboard.gif "keyboard")
+
 
 ### 2-2 tracking 사용법
 txt 파일에 저장된 position을 0.1s 마다 한줄씩 읽어 해당 위치로 가도록 명령합니다.
