@@ -113,8 +113,9 @@ private:
 
 
   //텍스트 파일 저장 관련 변수
-  std::string filePath;
-  std::ofstream writeFile;
+  std::string filePath; // 파일 주소 저장
+  bool firstWrite;
+  std::ofstream writeFile; // 읽어들인 파일 stream
 
   bool bool_recoding;
   bool bool_tracking;

@@ -1,0 +1,9 @@
+<launch>
+
+  <arg name="txt_location" default="/home/kwon/logs/drone_Info.txt"/>
+
+  <node pkg="mydrone_gui_keyboard" name="mydrone_gui_keyboard" type="mydrone_gui_keyboard" output="screen">
+    <param name="txt_location" type="str"  value="$(arg txt_location)"/>
+  </node>
+
+</launch>

@@ -14,6 +14,7 @@
 #include <ros/network.h>
 #include <string>
 #include <sstream>
+#include <iostream>
 #include <mydrone_gui_keyboard/qnode.hpp>
 #include "geometry_msgs/PoseStamped.h"
 #include "geometry_msgs/TwistStamped.h"
@@ -23,6 +24,7 @@
 #include "mavros_msgs/State.h"
 #include "nav_msgs/Odometry.h"
 #include <tf/tf.h>
+#include <tf2/LinearMath/Quaternion.h>
 #include <fstream>
 #include <time.h>
 
@@ -35,6 +37,8 @@
 *****************************************************************************/
 
 namespace mydrone_gui_keyboard {
+
+	using namespace std;
 
 		double positionX=0;
 		double positionY=0;
@@ -58,6 +62,7 @@ namespace mydrone_gui_keyboard {
 		float targetO_w=0;
 
 
+
 //
 
 
@@ -69,6 +74,7 @@ namespace mydrone_gui_keyboard {
 	  QVariant new_row; // log함수에서 사용
 
  		mavros_msgs::State current_state; // 현재 드론 상태 받는 변수
+
 
 	//서브스크라이버 콜백함수
 	void state_cb(const mavros_msgs::State::ConstPtr& msg){
@@ -120,19 +126,19 @@ QNode::QNode(int argc, char** argv ) :
 		offboard = false;
 		bool_recoding = false;
 		bool_tracking = false;
+		firstWrite = true;
 		filePath = "";
 
 	}
 
-	void QNode::inputToTextfile(){
-
-		if(writeFile.is_open() &&
+void QNode::inputToTextfile(){ // msgThread.cpp 에 의해 지속적으로 기록
+	if(writeFile.is_open() &&
 					bool_recoding == true) {
 			//ROS_INFO("저장됨");
-			writeFile << ros::WallTime::now()-startTime << "," << positionX << "," << positionY << "," << positionZ
-			<< "," << roll << "," << pitch << "," << yaw
-			<< "," << target_x << "," << target_y << "," << target_z
-			<< "," << velocity_x << "," << velocity_y << "," << velocity_z
+			writeFile << ros::WallTime::now()-startTime << " " << positionX << " " << positionY << " " << positionZ
+			<< " " << roll << " " << pitch << " " << yaw
+			<< " " << target_x << " " << target_y << " " << target_z
+			<< " " << velocity_x << " " << velocity_y << " " << velocity_z
 			<< "\n";
 		}
 	}
@@ -164,6 +170,15 @@ bool QNode::init() {
 	}
 	ros::start();
 	ros::NodeHandle n;
+
+
+	// 파라미터 read //
+
+
+	cout << ros::param::has("~txt_location") << endl;
+	if(ros::param::get("~txt_location",filePath)){
+	std::cout << "파일 이름 : " << filePath << std::endl;
+	}
 
 	startTime = ros::WallTime::now();//시작시간 기록//
 
@@ -287,9 +302,25 @@ void QNode::run() { // 여기서 계속 publish loop
 
 				//위치를 publish//
 				if(offboard == true) {//offboard상태일때만 위치 publish
-					if(bool_tracking == true){
-
-					}else{
+					if(bool_tracking == true){ // txt를 읽어 궤도를 따라 갈 때//
+						if(ros::Time::now()-last_request >ros::Duration(0.1)){
+								last_request = ros::Time::now();
+								cin >> target_x;
+								cin >> target_x >> target_y
+								>> target_z;
+								double r,p,y;
+								cin >> r >> p >> y;
+								tf2::Quaternion q;
+								q.setRPY(r,p,y);
+								targetO_x = q[0];
+								targetO_y = q[1];
+								targetO_z = q[2];
+								targetO_w = q[3];
+								//나머지 버리기
+								string t;
+								getline(cin,t);
+						}
+					}
 						pose.pose.position.x = target_x;
 						pose.pose.position.y = target_y;
 						pose.pose.position.z = target_z;
@@ -298,8 +329,7 @@ void QNode::run() { // 여기서 계속 publish loop
 						pose.pose.orientation.y = targetO_y;
 						pose.pose.orientation.z = targetO_z;
 						pose.pose.orientation.w = targetO_w;
-					}
-        	local_pos_pub.publish(pose);
+						local_pos_pub.publish(pose);
 				}
 
         ros::spinOnce();
@@ -379,17 +409,16 @@ void QNode::clearLogging(){
 }
 
 void QNode::startRecord(){
-	if(filePath == ""){ // 첫 startRecord버튼 누를시 //
+	if(firstWrite == true){ // 첫 startRecord버튼 누를시 //
 		//파일 새로 생성 //
 		//텍스트 파일 저장 관련 변수
-				filePath = "/home/kwon/catkin_ws/drone_Info.txt";
 				writeFile.open(filePath.data());
-
-				writeFile << "time(sec),"<<"position_x," << "position_y," << "position_z,"
-				<< "roll," << "pitch," << "yaw,"
-				<< "target_x," << "target_y," << "target_z,"
-				<< "velocity_x," << "velocity_y," << "velocity_z,"
+				writeFile << "time(sec) "<<"position_x " << "position_y " << "position_z "
+				<< "roll " << "pitch " << "yaw "
+				<< "target_x " << "target_y " << "target_z "
+				<< "velocity_x " << "velocity_y " << "velocity_z "
 				<< "\n";
+				firstWrite = false;
 		// 끝
 	}
 	bool_recoding = true;
@@ -400,7 +429,15 @@ void QNode::stopRecord(){
 }
 
 void QNode::startTracking(){
+	if(freopen(filePath.c_str(),"r",stdin) == NULL){
+		ROS_WARN_STREAM("cannot find file location parameter");
+		return;
+	}
+
+	string t;
+	getline(cin,t);
 	bool_tracking = true;
+	return;
 }
 
 void QNode::stopTracking(){
