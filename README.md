@@ -36,13 +36,16 @@ d : 우로 이동
 txt 파일에 저장된 position을 0.1s 마다 한줄씩 읽어 해당 위치로 가도록 명령합니다.
 
 *txt파일 read/write 경로 수정 방법
+
 src/mydrone_gui_keyboard/launch/mydrone.launch의 
 txt_location 값을 수정해줌으로써 변경가능합니다.
 
 *start recording 
+
 txt_location 위치에 txt파일로 0.1s 마다 위치와 방향 등을 기록합니다.
 
 *start tracking
+
 txt_location 위치의 txt파일을 0.1s 마다 한줄씩 읽어와 드론에게 위치를 전송합니다.
 
 ![Alt text](/image/tracking.gif "tracking")
