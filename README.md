@@ -5,6 +5,7 @@ mydrone_gui_keyboard
 ---------------
 드론을 키보드로 조종하거나 
 timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합니다.
+(2020 KROC 참여)
 
 
 2.how to use
