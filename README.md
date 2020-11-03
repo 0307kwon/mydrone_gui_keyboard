@@ -25,17 +25,16 @@ timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합�
 (tracking 관련 txt파일 위치는 launch파일에서 수정가능)
 
 ### 2-1 키보드 사용법
- w : 전진  
- s : 후진  
- a : 좌로 이동  
- d : 우로 이동  
+w : 전진  
+s : 후진  
+a : 좌로 이동  
+d : 우로 이동  
 
 
- ↑ : 고도 상승  
- ↓ : 고도 하강  
- ( 키입력이 제대로 작동하지 않을 때에는 화면의 오른쪽 Command Panel에 focus를 두고(마우스 클릭) 다시 시도 )  
-
-  ![Alt text](/image/keyboard.gif "keyboard")
+↑ : 고도 상승  
+↓ : 고도 하강  
+( 키입력이 제대로 작동하지 않을 때에는 화면의 오른쪽 Command Panel에 focus를 두고(마우스 클릭) 다시 시도 )  
+  * ![Alt text](/image/keyboard.gif "keyboard")
 
 
 ### 2-2 tracking 사용법
