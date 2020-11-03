@@ -34,7 +34,7 @@ d : 우로 이동
 ↑ : 고도 상승  
 ↓ : 고도 하강  
 ( 키입력이 제대로 작동하지 않을 때에는 화면의 오른쪽 Command Panel에 focus를 두고(마우스 클릭) 다시 시도 )  
-  * ![Alt text](/image/keyboard.gif "keyboard")
+![Alt text](/image/keyboard.gif "keyboard")
 
 
 ### 2-2 tracking 사용법
@@ -48,6 +48,6 @@ d : 우로 이동
 
 * start tracking
   * txt_location 위치의 txt파일을 0.1s 마다 한줄씩 읽어와 드론에게 위치를 전송합니다.
-  * ![Alt text](/image/tracking.gif "tracking")
+  ![Alt text](/image/tracking.gif "tracking")
 
 
