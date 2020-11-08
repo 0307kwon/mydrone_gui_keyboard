@@ -67,7 +67,7 @@ d : 우로 이동
 
 <img src="./readme_images/image03.png" width=500px>
 
-## 3-2. qnode.cpp
+## 3-2. [qnode.cpp](https://github.com/0307kwon/mydrone_gui_keyboard/blob/master/src/qnode.cpp)
 ### ● 핵심 함수
 ```c++
 void QNode::inputToTextfile() // timestamp마다 드론의 현위치를 txt파일에 기록하는 함수입니다. 
