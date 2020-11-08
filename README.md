@@ -78,10 +78,7 @@ void QNode::run() // 이 함수에서 지속적인 메세지 수신 or 전달이
 ```
 
 ### ● void QNode::run()
-1. 드론을 arming(시동을 걺)
-
-
-( line 248 ~ 271 )
+1. 드론을 arming(시동을 걺)  ( line 248 ~ 271 )
 
 
 ```c++
@@ -110,10 +107,7 @@ if(offboard == true){ // offboard 명령을 받으면//
 			}
 		}else{ // disarm 명령을 줄 때 //
 ```
-2. 드론에게 목표 position(x,y,z)를 전달
-
-
-( line 304 ~ 333 )
+2. 드론에게 목표 position(x,y,z)를 전달  ( line 304 ~ 333 )
 
 
 * bool_tracking이 true 값이면 txt파일로 읽어들인 x,y,z 목표 위치로 보냅니다.
