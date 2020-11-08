@@ -13,6 +13,9 @@ timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합�
 
 * 2020 KRoC
   * '비전센서와 유선 포텐셜 필드를 이용한 쿼드로터의 장애물 회피' 논문에 2저자 참여
+  
+
+<img src="./readme_images/image04.png" width="400px">
 
 # 2. Hardware structure
 
