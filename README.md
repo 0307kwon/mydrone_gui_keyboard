@@ -6,6 +6,10 @@ mydrone_gui_keyboard
 timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합니다.
 
 
+<img src="./readme_images/image04.gif" width="400px">
+
+
+
 * IAS lab 학부연구생 과제  
   * 지도교수 : 이현범 교수님  
   * 연수기간 : 2019.08 ~ 2020.09  
@@ -14,8 +18,6 @@ timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합�
 * 2020 KRoC
   * '비전센서와 유선 포텐셜 필드를 이용한 쿼드로터의 장애물 회피' 논문에 2저자 참여
   
-
-<img src="./readme_images/image04.gif" width="400px">
 
 # 2. Hardware structure
 
