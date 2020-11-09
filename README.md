@@ -1,7 +1,18 @@
 mydrone_gui_keyboard
 ========================
 
-# 1. summary
+# 0. index
+
+1. [Summary](https://github.com/0307kwon/mydrone_gui_keyboard#1-summary)
+
+2. [Hardware structure](https://github.com/0307kwon/mydrone_gui_keyboard#2-hardware-structure)
+
+3. [Code Structure](https://github.com/0307kwon/mydrone_gui_keyboard#3-code-structure)
+
+4. [How to use](https://github.com/0307kwon/mydrone_gui_keyboard#4-how-to-use)
+
+
+# 1. Summary
 드론을 키보드로 조종하거나  
 timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합니다.
 
@@ -118,7 +129,7 @@ if(offboard == true) {//offboard상태일때만 위치 publish
 ```
 
 
-# 4. how to use
+# 4. How to use
 1. catkin_ws/src 폴더로 진입
 2. git clone https://github.com/0307kwon/mydrone_gui_keyboard.git
 3. catkin_make
