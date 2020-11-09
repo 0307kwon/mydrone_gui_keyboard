@@ -27,7 +27,6 @@ timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합�
 
 <img src="./readme_images/image02.png" width="500px">
 
-
 ▲ 전체 Ros 통신 구성
 
 # 3. Code Structure
