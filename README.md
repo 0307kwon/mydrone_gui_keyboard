@@ -39,11 +39,11 @@ timestamp 마다 position이 기록된 text를 불러들여 드론을 조종합�
 ## 3-2. [qnode.cpp](https://github.com/0307kwon/mydrone_gui_keyboard/blob/master/src/qnode.cpp)
 ### ● 핵심 함수 목록
 ```c++
-void QNode::inputToTextfile() // timestamp마다 드론의 현위치를 txt파일에 기록하는 함수입니다. 
+void QNode::inputToTextfile(); // timestamp마다 드론의 현위치를 txt파일에 기록하는 함수입니다. 
 
-bool QNode::init() // Ros 연결을 정의하여 Ros 통신을 준비합니다.
+bool QNode::init(); // Ros 연결을 정의하여 Ros 통신을 준비합니다.
 
-void QNode::run() // 이 함수에서 지속적인 메세지 수신 or 전달이 이루어집니다.
+void QNode::run(); // 이 함수에서 지속적인 메세지 수신 or 전달이 이루어집니다.
 ```
 
 ### ● void QNode::run()
